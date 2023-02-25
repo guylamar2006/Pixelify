@@ -146,8 +146,8 @@ afterEvaluate {
         task("zip${variantCapped}", type: Zip) {
             dependsOn("prepareMagiskFiles${variantCapped}")
             from magiskDir
-            archiveName zipName
-            destinationDir outDir
+            archiveFileName zipName
+            destinationDirectory outDir
         }
 
         task("novkzip${variantCapped}", type: Zip) {
@@ -155,8 +155,8 @@ afterEvaluate {
             dependsOn("novk${variantCapped}")
             tasks.findByName("novk${variantCapped}").mustRunAfter "zip${variantCapped}"
             from magiskDir
-            archiveName zipNamenovk
-            destinationDir outDir
+            archiveFileName zipName
+            destinationDirectory outDir
             doLast {
                 delete {
                     from "$outDir"
